@@ -1,5 +1,5 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
-version: '3.8'
+version: '3.3'
 services:
   evaluar_cursos_jh-app:
     image: evaluar_cursos_jh
@@ -7,28 +7,34 @@ services:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=dev,api-docs
       - MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED=true
-      - SPRING_DATASOURCE_URL=jdbc:mysql://evaluar_cursos_jh-mysql:3306/evaluar_cursos_jh?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
-      - SPRING_LIQUIBASE_URL=jdbc:mysql://evaluar_cursos_jh-mysql:3306/evaluar_cursos_jh?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
-      - JHIPSTER_SLEEP=30 # gives time for other services to boot before the application
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-jh:3306/db-jh?useSSL=false&allowPublicKeyRetrieval=true
+      - SPRING_LIQUIBASE_URL=jdbc:mysql://db-jh:3306/db-jh?useSSL=false&allowPublicKeyRetrieval=true
+      - JHIPSTER_SLEEP=5 # gives time for other services to boot before the application
     # If you want to expose these ports outside your dev PC,
     # remove the "127.0.0.1:" prefix
     ports:
       - 127.0.0.1:8080:8080
-  evaluar_cursos_jh-mysql:
-    image: mysql:8.0.30
-    # volumes:
-    #   - ~/volumes/jhipster/evaluar_cursos_jh/mysql/:/var/lib/mysql/
-    volumes:
-      - ./config/mysql:/etc/mysql/conf.d
+  db-jh:
+    image: mysql
+    restart: always
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-      - MYSQL_DATABASE=evaluar_cursos_jh
-      - MYQL_ROOT_HOST= evaluar_cursos_jh-mysql
-      - MYSQL_ROOT_PASSWORD= root
-      - MYSQL_USER= root
-      - MYSQL_PASSWORD= root
-    # If you want to expose these ports outside your dev PC,
-    # remove the "127.0.0.1:" prefix
+      - MYSQL_DATABASE=db
+      # So you don't have to use root, but you can if you like
+      - MYSQL_USER=root
+      # You can use whatever password you like
+      - MYSQL_PASSWORD=1234
+      # Password for root access
+      - MYSQL_ROOT_PASSWORD=1234
     ports:
-      - 127.0.0.1:3306:3306
-    command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
+      # <Port exposed> : <MySQL Port running inside container>
+      - 3305:3306
+    expose:
+      # Opens port 3306 on the container
+      - 3306
+      # Where our data will be persisted
+    volumes:
+      - my-db2:/var/lib/mysql
+
+volumes:
+  my-db2:
+    external: true

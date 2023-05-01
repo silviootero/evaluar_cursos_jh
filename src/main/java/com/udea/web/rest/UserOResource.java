@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -50,10 +51,12 @@ public class UserOResource {
     @PostMapping("/user-os")
     public ResponseEntity<UserO> createUserO(@Valid @RequestBody UserO userO) throws URISyntaxException {
         log.debug("REST request to save UserO : {}", userO);
+
         if (userO.getUserName() != null) {
             throw new BadRequestAlertException("A new userO cannot already have an ID", ENTITY_NAME, "idexists");
         }
         UserO result = userORepository.save(userO);
+
         return ResponseEntity
             .created(new URI("/api/user-os/" + result.getUserName()))
             .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getUserName()))
