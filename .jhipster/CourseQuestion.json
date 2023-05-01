@@ -1,0 +1,20 @@
+{
+  "applications": "*",
+  "changelogDate": "20230428081313",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "course_question",
+  "fields": [
+    {
+      "fieldName": "courseQuestion",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "CourseQuestion",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

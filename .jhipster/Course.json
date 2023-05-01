@@ -1,0 +1,27 @@
+{
+  "applications": "*",
+  "changelogDate": "20230428081311",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "course",
+  "fields": [
+    {
+      "fieldName": "courseName",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Course",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "totalScoreCourse",
+      "otherEntityRelationshipName": "course",
+      "relationshipName": "totalScoreCourse",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

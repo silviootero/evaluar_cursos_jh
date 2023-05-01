@@ -1,0 +1,20 @@
+{
+  "applications": "*",
+  "changelogDate": "20230428081314",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "profesor_question",
+  "fields": [
+    {
+      "fieldName": "profesorQuestion",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "ProfesorQuestion",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

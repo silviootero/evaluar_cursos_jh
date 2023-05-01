@@ -48,6 +48,30 @@ public class CacheConfiguration {
             createCache(cm, com.udea.domain.User.class.getName());
             createCache(cm, com.udea.domain.Authority.class.getName());
             createCache(cm, com.udea.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.udea.domain.UserO.class.getName());
+            createCache(cm, com.udea.domain.Student.class.getName());
+            createCache(cm, com.udea.domain.Student.class.getName() + ".enrollCourses");
+            createCache(cm, com.udea.domain.AcademicProgram.class.getName());
+            createCache(cm, com.udea.domain.AcademicProgram.class.getName() + ".students");
+            createCache(cm, com.udea.domain.AcademicProgram.class.getName() + ".enrollCourses");
+            createCache(cm, com.udea.domain.Profesor.class.getName());
+            createCache(cm, com.udea.domain.Profesor.class.getName() + ".enrollCourses");
+            createCache(cm, com.udea.domain.Profesor.class.getName() + ".totalScoreCourses");
+            createCache(cm, com.udea.domain.EnrollCourse.class.getName());
+            createCache(cm, com.udea.domain.Role.class.getName());
+            createCache(cm, com.udea.domain.Role.class.getName() + ".userOS");
+            createCache(cm, com.udea.domain.Course.class.getName());
+            createCache(cm, com.udea.domain.Course.class.getName() + ".totalScoreCourses");
+            createCache(cm, com.udea.domain.AcademicPeriod.class.getName());
+            createCache(cm, com.udea.domain.AcademicPeriod.class.getName() + ".enrollCourses");
+            createCache(cm, com.udea.domain.AcademicPeriod.class.getName() + ".totalScoreCourses");
+            createCache(cm, com.udea.domain.AcademicPeriod.class.getName() + ".totalScoreProfesors");
+            createCache(cm, com.udea.domain.CourseQuestion.class.getName());
+            createCache(cm, com.udea.domain.ProfesorQuestion.class.getName());
+            createCache(cm, com.udea.domain.EvaluationCourse.class.getName());
+            createCache(cm, com.udea.domain.EvaluationProfesor.class.getName());
+            createCache(cm, com.udea.domain.TotalScoreCourse.class.getName());
+            createCache(cm, com.udea.domain.TotalScoreProfesor.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

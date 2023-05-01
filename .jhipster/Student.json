@@ -1,0 +1,39 @@
+{
+  "applications": "*",
+  "changelogDate": "20230428081306",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "student",
+  "fields": [
+    {
+      "fieldName": "studentName",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Student",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "userO",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "enrollCourse",
+      "otherEntityRelationshipName": "student",
+      "relationshipName": "enrollCourse",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "academicProgram",
+      "otherEntityRelationshipName": "student",
+      "relationshipName": "program",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
